@@ -1,5 +1,5 @@
 esphome:
-  name: esp32-cam
+  name: esp32-cam-security-camera
   platform: ESP32
   board: esp32dev  
 
@@ -8,8 +8,8 @@ logger:
 
 # Enable Home Assistant API
 api:
-  encryption:
-    key: "***********************************************"
+  # encryption:
+  #   key: 
 
 ota:
   - platform: esphome
@@ -20,11 +20,6 @@ web_server:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: "Esp32-Cam Fallback Hotspot"
-    password: "C3FOhAPFtouw"
 
 captive_portal:
 
@@ -43,9 +38,11 @@ esp32_camera:
   power_down_pin: GPIO32
 
   # Image settings
-  name: My ESP32-CAM 
+  name: ESP32-CAM Security Camera
+  vertical_flip: False
+  horizontal_mirror: False
+  brightness: 2
 
-# Flashlight
 ## GPIO_4 is the flash light pin
 light:
   - platform: binary
@@ -54,25 +51,36 @@ light:
     
 # Servo
 servo:
-  - id: test_servo
-    output: test_servo_output
-    auto_detach_time: 3s
-    transition_length: 2s
+  - id: servo_lr
+    output: servo_output_lr
+    auto_detach_time: 2s
+    transition_length: 3s
+
+  - id: servo_ud
+    output: servo_output_ud
+    auto_detach_time: 2s
+    transition_length: 3s
 
 output:
   - platform: ledc
-    id: test_servo_output
+    id: servo_output_lr
     pin: GPIO15
-    frequency: 50 Hz    
+    frequency: 50 Hz
 
+  - platform: ledc
+    id: servo_output_ud
+    pin: GPIO13
+    frequency: 50 Hz
+
+  # Flashlight
   - platform: gpio
     pin: GPIO4
     id: gpio_4
 
 number:
   - platform: template
-    name: 'Test Servo '
-    id: test_servo_number
+    name: 'Servo SC LR'
+    id: servo_number_lr
     min_value: -100
     initial_value: 0
     max_value: 100
@@ -81,8 +89,22 @@ number:
     set_action:
       then:
         - servo.write:
-            id: test_servo
-            level: !lambda 'return x / 100.0;'    
+            id: servo_lr
+            level: !lambda 'return x / 100.0;'
+
+  - platform: template
+    name: 'Servo SC UD'
+    id: servo_number_ud
+    min_value: -30
+    initial_value: 0
+    max_value: 100
+    step: 10
+    optimistic: true
+    set_action:
+      then:
+        - servo.write:
+            id: servo_ud
+            level: !lambda 'return x / 100.0;'
 
 button:
   - platform: template
@@ -90,7 +112,7 @@ button:
     id: move_right
     on_press:
       - number.increment:
-         id: test_servo_number
+         id: servo_number_lr
          cycle: false  
 
   - platform: template
@@ -98,5 +120,32 @@ button:
     id: move_left
     on_press:
       - number.decrement:
-         id: test_servo_number
+         id: servo_number_lr
+         cycle: false
+
+  - platform: template
+    name: 'Servo Up'
+    id: move_up
+    on_press:
+      - number.decrement:
+         id: servo_number_ud
          cycle: false  
+
+  - platform: template
+    name: 'Servo Down'
+    id: move_down
+    on_press:
+      - number.increment:
+         id: servo_number_ud
+         cycle: false
+
+# DHT22
+sensor:
+  - platform: dht
+    pin: GPIO14
+    model: DHT22
+    temperature:
+      name: "Balcony Temperature"
+    humidity:
+      name: "Balcony Humidity"
+    update_interval: 60s
