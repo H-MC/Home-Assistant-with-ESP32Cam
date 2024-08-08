@@ -47,3 +47,9 @@ It's better to give a 5V power supply for image transmission, you can just conne
 </div>
 
 Find a suitable case and install the 2 SG90s on the steering gear. A sercurity camera with temperature and humidity sensor is successfully done for Home Assistant!
+
+
+## Contact me
+If you got any problem, it's feel free to contact me! \
+\
+Email: davhsi3@gmail.com
