@@ -34,7 +34,7 @@ Click **" ⁝ "** botton ⇒ **Configure Wi-Fi** ⇒ Select Wi-Fi and enter your
 * **Upload configuration:** \
 In ESPHome tab of Home Assistant, click **adopt** and follow the following instructions. Then **EDIT** the ```.yaml``` file, copy and paste all of the code from [```esp32cam.yaml```](esp32cam.yaml). Finally, just click **SAVE** and **INSTALL** to upload configuration. From now on, you can choose install **wirelessly**, just make sure ESP32-Cam is powered and connected to Wi-Fi. And wait for few minutes until seeing the *SUCCESS* info. 
 
-![Success_Info](SuccessINFO.png)
+![Success_Info](img/SuccessINFO.png)
 
  Now, ESP32-Cam has been added to ESPHome and you can check by **"VISIT"** the divice web. 
 
@@ -43,7 +43,7 @@ Connect wires by following circuit. \
 It's better to give a 5V power supply for image transmission, you can just connect to a not-in-use phone charger. **GPIO13** is for servo turning up and down, and **GPIO15** for left and right. **GPIO14** uses for humidity and temperature sensor (DHT22). I recommend to replace an external 2.4G antenna to get a better signal. Please see [here](https://randomnerdtutorials.com/esp32-cam-connect-external-antenna/) or this [video](https://www.youtube.com/watch?v=aBTZuvg5sM8&t=1s) to learn how to connect an external antenna. 
 
 <div align=left>
-<img src="CircuitESP32.png" width="600">
+<img src="img/CircuitESP32.png" width="600">
 </div>
 
 Find a suitable case and install the 2 SG90s on the steering gear. A sercurity camera with temperature and humidity sensor is successfully done for Home Assistant!
