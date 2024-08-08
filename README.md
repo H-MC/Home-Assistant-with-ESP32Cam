@@ -50,6 +50,6 @@ Find a suitable case and install the 2 SG90s on the steering gear. A sercurity c
 
 
 ## Contact me
-If you got any problem, it's feel free to contact me! \
+If you got any questions, please feel free to contact me! \
 \
 Email: davhsi3@gmail.com
