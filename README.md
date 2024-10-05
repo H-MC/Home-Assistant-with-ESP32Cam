@@ -1,6 +1,6 @@
 # Make a Security Camera in Home Assistant
 
-##TODO: Implementation video
+![Operation GIF](img/Operation.gif)
 
 ## Home Assistant <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStB6C1liB44PdYGSsGnWeSP3AfhWo0Utie_A&s" width="40"> 
 
