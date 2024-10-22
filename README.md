@@ -32,7 +32,7 @@ Click **" ⁝ "** botton ⇒ **Configure Wi-Fi** ⇒ Select Wi-Fi and enter your
 <br/>
 
 * **Upload configuration:** \
-In ESPHome tab of Home Assistant, click **adopt** and follow the following instructions. Then **EDIT** the ```.yaml``` file, copy and paste all of the code from [```esp32cam.yaml```](esp32cam.yaml). Finally, just click **SAVE** and **INSTALL** to upload configuration. From now on, you can choose install **wirelessly**, just make sure ESP32-Cam is powered and connected to Wi-Fi. And wait for few minutes until seeing the *SUCCESS* info. 
+In ESPHome tab of Home Assistant, click **adopt** and follow the following instructions. Then **EDIT** the ```.yaml``` file, copy and paste all of the code from [```esp32cam-security-camera.yaml```](esp32cam-security-camera.yaml). Finally, just click **SAVE** and **INSTALL** to upload configuration. From now on, you can choose install **wirelessly**, just make sure ESP32-Cam is powered and connected to Wi-Fi. And wait for few minutes until seeing the *SUCCESS* info. 
 
 ![Success_Info](img/SuccessINFO.png)
 
